@@ -1,5 +1,5 @@
 // import 'reflect-metadata';
-// import 'core-js';
+import 'core-js';
 import 'zone.js';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
