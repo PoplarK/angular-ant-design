@@ -1,0 +1,14 @@
+.idea/
+*~
+~*
+*.diff
+*.patch
+*.bak
+.DS_Store
+.project
+*.swp
+*.swo
+*.log
+node_modules/
+.buildpath
+.settings
