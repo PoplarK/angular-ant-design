@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
 })
 export class RootComponent {
 
-  btnClassName: string = 'btn btn-primary';
+  primaryBtnClassName: string = 'ant-btn ant-btn-primary';
+  defaultBtnClassName: string = 'ant-btn';
+  dashedBtnClassName: string = 'ant-btn ant-btn-dashed';
+  dangerBtnClassName: string = 'ant-btn ant-btn-danger';
 
   clickBtn = (evt: boolean) => {
     console.log('ssss', evt);

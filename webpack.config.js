@@ -14,7 +14,7 @@ const webpackConfig = {
     // sourceMapFilename: '[name].js.map'
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts', '.less']
   },
   devtool: 'source-map',
   module: {
@@ -37,10 +37,19 @@ const webpackConfig = {
             loader: 'html-loader'
           }
         ]
+      // }, {
+      //   test: /\.css$/,
+      //   use: 'raw-loader'
       }, {
-        test: /\.css$/,
-        use: 'raw-loader'
-      },
+        test: /\.less$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'less-loader'
+        }]
+      }
     ]
   },
   plugins: [

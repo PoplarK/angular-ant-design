@@ -23,6 +23,9 @@ export class ButtonDirective implements OnInit {
 
   ngOnInit() {
     console.log('on init: ', this.el.nativeElement);
+    if(this.className) {
+      this.el.nativeElement.className = this.className;
+    }
   }
 
   @HostListener('click') handleClick = () => {

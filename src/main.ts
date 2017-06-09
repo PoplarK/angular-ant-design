@@ -2,6 +2,8 @@
 import 'core-js';
 import 'zone.js';
 
+import './style';
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
