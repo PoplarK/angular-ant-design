@@ -4,4 +4,11 @@ import { Component } from '@angular/core';
   selector: 'root',
   templateUrl: './root.html'
 })
-export class RootComponent {}
+export class RootComponent {
+
+  btnClassName: string = 'btn btn-primary';
+
+  clickBtn = (evt: boolean) => {
+    console.log('ssss', evt);
+  }
+}

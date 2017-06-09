@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { RootComponent } from './components/root/root';
-import { ButtonComponent } from './components/button/button';
+import { ButtonDirective } from './directives/button/button';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { ButtonComponent } from './components/button/button';
   ],
   declarations: [
     RootComponent,
-    ButtonComponent
+    ButtonDirective
    ],
   providers: [],
   bootstrap: [ RootComponent ]

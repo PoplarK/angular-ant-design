@@ -6,6 +6,7 @@
     "experimentalDecorators": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "emitDecoratorMetadata": true,
     "target": "es5",
     "lib": [
       "dom",
