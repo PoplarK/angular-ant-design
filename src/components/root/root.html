@@ -1,6 +1,6 @@
 <div>
   <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
-  <button [className]="defaultBtnClassName" (onClick)="clickBtn($event)">default</button>
-  <button [className]="dashedBtnClassName" (onClick)="clickBtn($event)">default</button>
-  <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">default</button>
+  <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
+  <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
+  <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
 </div>
