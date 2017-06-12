@@ -12,7 +12,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { RootComponent } from './components/root/root';
-import { ButtonDirective } from './directives/button/button';
+import { Button, ButtonGroup } from './components/button';
 
 @NgModule({
   imports: [
@@ -21,7 +21,8 @@ import { ButtonDirective } from './directives/button/button';
   ],
   declarations: [
     RootComponent,
-    ButtonDirective
+    Button,
+    ButtonGroup,
    ],
   providers: [],
   bootstrap: [ RootComponent ]
