@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 
 import { RootComponent } from './components/root/root';
 import { Button, ButtonGroup } from './components/button';
+import { Icon } from './components/icon';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { Button, ButtonGroup } from './components/button';
     RootComponent,
     Button,
     ButtonGroup,
+    Icon,
    ],
   providers: [],
   bootstrap: [ RootComponent ]
