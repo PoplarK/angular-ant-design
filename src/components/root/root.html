@@ -14,13 +14,21 @@
   <section>
     <h2>button</h2>
     <div>
-      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
-      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
-      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
-      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
-      <button [className]="'ant-btn-primary'" [loading]="true" [size]="'small'" (onClick)="clickBtn($event)">
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
+      <button (onMouseDown)="clickBtn($event)">Default</button>
+      <button [type]="'ghost'" (onMouseUp)="clickBtn($event)">Ghost</button>
+      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
+      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
+      <button [type]="'primary'" [size]="'large'" (onClick)="clickBtn($event)">
+        <i anticon type="search"></i>
+        <span>Search</span>
+      </button>
+      <button [type]="'primary'" [loading]="true" [size]="'small'" (onClick)="clickBtn($event)">
         <i anticon type="loading"></i>
-        <span>loading</span>
+        <span>Loading</span>
+      </button>
+      <button [type]="'primary'" [shape]="'circle'" (onMouseUp)="clickBtn($event)">
+        <i anticon type="search"></i>
       </button>
     </div>
   </section>
@@ -29,24 +37,24 @@
     <h2>button group</h2>
     <h3>default</h3>
     <div button-group [className]="ant-btn-group">
-      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
-      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
-      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
-      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
+      <button (onMouseDown)="clickBtn($event)">Default</button>
+      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
+      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>large</h3>
     <div button-group [className]="ant-btn-group" [size]="'large'">
-      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
-      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
-      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
-      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
+      <button (onMouseDown)="clickBtn($event)">Default</button>
+      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
+      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>small</h3>
     <div button-group [className]="ant-btn-group" [size]="'small'">
-      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
-      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
-      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
-      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
+      <button (onMouseDown)="clickBtn($event)">Default</button>
+      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
+      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
   </section>
 </div>

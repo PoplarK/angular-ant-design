@@ -12,27 +12,20 @@ export type ButtonSize = 'small' | 'large';
 })
 export class ButtonComponent implements OnInit, OnChanges {
 
-  static defaultProps = {
-    prefixCls: 'ant-btn',
-    loading: false,
-    clicked: false,
-    ghost: false,
-  };
-
   // timeout: number;
   // delayTimeout: number;
 
   @Input() type?: ButtonType;
-  // @Input() htmlType?: string;
-  @Input() icon?: string;
-  // @Input() shape?: ButtonShape;
-  @Input() size?: ButtonSize;
-  @Input() loading?: boolean | { delay?: number };
-  @Input() disabled?: boolean;
+  @Input() htmlType?: string;
+  @Input() icon?: string; // alterable
+  @Input() shape?: ButtonShape; // alterable?
+  @Input() size?: ButtonSize; // alterable
+  @Input() loading?: boolean | { delay?: number }; // alterable
+  @Input() disabled?: boolean; // alterable
   // @Input() style?: string;
   @Input() prefixCls?: string = 'ant-btn';
   @Input() className?: string;
-  // @Input() ghost?: boolean;
+  @Input() ghost?: boolean;
 
   @Output() onClick?: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onMouseDown?: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -45,31 +38,24 @@ export class ButtonComponent implements OnInit, OnChanges {
   ngOnInit() {
     console.log('on init: ', this.el.nativeElement);
 
-    let prefixCls = 'ant-btn';
-    // let size = 'small';
-    const classes = classNames(prefixCls, {
-      // [`${prefixCls}-${size}`]: size,
-      // [`${prefixCls}-${type}`]: type,
-      // [`${prefixCls}-${shape}`]: shape,
-      // [`${prefixCls}-${sizeCls}`]: sizeCls,
-      // [`${prefixCls}-icon-only`]: !children && icon,
-      // [`${prefixCls}-loading`]: loading,
-      // [`${prefixCls}-clicked`]: clicked,
-      // [`${prefixCls}-background-ghost`]: ghost,
-    }, this.className);
-    console.log('cccccc', this.className, classes);
-
-    // this.el.nativeElement.className = classes;
+    this.el.nativeElement.type = this.htmlType || 'button';
+    this.setClasses();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    let classNameChange = changes.className;
-    if (classNameChange) {
-      this.resetClasses();
+    let changed = false;
+    for (let key in changes) {
+      let change = changes[key];
+      if (!change.isFirstChange()) {
+        changed = true;
+      }
+    }
+    if (changed) {
+      this.setClasses();
     }
   }
 
-  resetClasses() {
+  setClasses() {
     let sizeCls = '';
     switch (this.size) {
       case 'large':
@@ -84,12 +70,12 @@ export class ButtonComponent implements OnInit, OnChanges {
 
     let classes = classNames(this.prefixCls, {
       [`${this.prefixCls}-${this.type}`]: this.type,
-      // [`${this.prefixCls}-${shape}`]: shape,
+      [`${this.prefixCls}-${this.shape}`]: this.shape,
       [`${this.prefixCls}-${sizeCls}`]: sizeCls,
       // [`${this.prefixCls}-icon-only`]: !children && icon,
       [`${this.prefixCls}-loading`]: this.loading,
       // [`${this.prefixCls}-clicked`]: clicked,
-      // [`${this.prefixCls}-background-ghost`]: ghost,
+      [`${this.prefixCls}-background-ghost`]: this.ghost,
     }, this.className);
     this.classes = classes;
   }
