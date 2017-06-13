@@ -1,1 +1,1 @@
-export { IconComponent as Icon } from './icon';
+export { Icon } from '../../directives/icon';

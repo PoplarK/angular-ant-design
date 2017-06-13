@@ -3,11 +3,11 @@
   <section>
     <h2>icon</h2>
     <div>
-      <icon type="link"></icon>
-      <icon type="up"></icon>
-      <icon type="right"></icon>
-      <icon type="down"></icon>
-      <icon type="left"></icon>
+      <i anticon type="link"></i>
+      <i anticon type="up"></i>
+      <i anticon type="right"></i>
+      <i anticon type="down"></i>
+      <i anticon type="left"></i>
     </div>
   </section>
 
@@ -18,16 +18,20 @@
       <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
       <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
       <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+      <button [className]="'ant-btn-primary'" [loading]="true" [size]="'small'" (onClick)="clickBtn($event)">
+        <i anticon type="loading"></i>
+        <span>loading</span>
+      </button>
     </div>
   </section>
 
   <section>
     <h2>button group</h2>
-    <button-group [className]="ant-btn-group">
+    <div button-group [className]="ant-btn-group">
       <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
       <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
       <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
       <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
-    </button-group>
+    </div>
   </section>
 </div>

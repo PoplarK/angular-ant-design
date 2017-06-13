@@ -1,20 +1,18 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
 import * as classNames from 'classnames';
 
 export type ButtonSize = 'small' | 'large';
 
 @Component({
-  selector: 'button-group',
+  selector: '[button-group]',
   styles: ['.ant-btn-group > .ant-btn { margin-right: 0; }'],
   template: `
-    <div [ngClass]="classes">
-      <ng-content></ng-content>
-    </div>
+    <ng-content></ng-content>
   `
 })
 export class ButtonGroupComponent implements OnChanges {
 
-  classes: string;
+  @HostBinding('class') classes: string = '';
 
   @Input() size?: ButtonSize;  
   @Input() style?: string; // TODO - React.CSSProperties

@@ -1,15 +1,12 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, Input, Output, HostBinding, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import * as classNames from 'classnames';
 // import omit from 'omit.js';
 
-@Component({
-  selector: 'icon',
-  template: `
-    <i [ngClass]="classes"></i>
-  `
+@Directive({
+  selector: '[anticon]',
 })
-export class IconComponent implements OnChanges {
-  classes: string = '';
+export class IconDirective implements OnChanges {
+  @HostBinding("class") classes: string = '';
 
   @Input() type: string;
   @Input() className?: string;
