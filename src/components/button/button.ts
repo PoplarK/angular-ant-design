@@ -21,7 +21,7 @@ export class ButtonComponent implements OnInit, OnChanges {
   @Input() shape?: ButtonShape; // alterable?
   @Input() size?: ButtonSize; // alterable
   @Input() loading?: boolean | { delay?: number }; // alterable
-  @Input() disabled?: boolean; // alterable
+  @Input() @HostBinding('disabled') disabled?: boolean; // alterable
   // @Input() style?: string;
   @Input() prefixCls?: string = 'ant-btn';
   @Input() className?: string;
