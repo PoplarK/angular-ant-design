@@ -14,22 +14,14 @@
   <section>
     <h2>button</h2>
     <div>
-      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)" [loading]="loading">Primary</button>
       <button (onMouseDown)="clickBtn($event)">Default</button>
       <button [type]="'ghost'" (onMouseUp)="clickBtn($event)">Ghost</button>
       <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
       <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
-      <button [type]="'primary'" [size]="'large'" (onClick)="clickBtn($event)">
-        <i anticon type="search"></i>
-        <span>Search</span>
-      </button>
-      <button [type]="'primary'" [loading]="true" [size]="'small'" (onClick)="clickBtn($event)">
-        <i anticon type="loading"></i>
-        <span>Loading</span>
-      </button>
-      <button [type]="'primary'" [shape]="'circle'" (onMouseUp)="clickBtn($event)">
-        <i anticon type="search"></i>
-      </button>
+      <button [type]="'primary'" [size]="'large'" (onClick)="clickBtn($event)" [icon]="'search'">Search</button>
+      <button [type]="'primary'" [loading]="true" [size]="'small'" (onClick)="clickBtn($event)" [loading]="true">Loading</button>
+      <button [type]="'primary'" [shape]="'circle'" (onMouseUp)="clickBtn($event)" [icon]="'search'"></button>
       <button [type]="'primary'" [disabled]="true" (onClick)="clickBtn($event)">Primary(disabled)</button>
       <button [disabled]="true" (onMouseDown)="clickBtn($event)">Default(disabled)</button>
       <button [type]="'dashed'" [disabled]="true" (onMouseUp)="clickBtn($event)">Dashed(disabled)</button>

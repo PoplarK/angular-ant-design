@@ -6,12 +6,11 @@ import { Component } from '@angular/core';
 })
 export class RootComponent {
 
-  primaryBtnClassName: string = 'ant-btn-primary';
-  defaultBtnClassName: string = '';
-  dashedBtnClassName: string = 'ant-btn-dashed';
-  dangerBtnClassName: string = 'ant-btn-danger';
+  loading: boolean = false;
 
   clickBtn = (evt: boolean) => {
-    console.log('ssss', evt);
+    console.log('clickBtn ', evt);
+    this.loading = true;
+    setTimeout(() => { this.loading = false; }, 2000);
   }
 }
