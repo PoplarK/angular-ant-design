@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, HostBinding, Input, Output, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, HostBinding, Input, Output, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import * as classNames from 'classnames';
 // import omit from 'omit.js';
 
@@ -6,10 +6,11 @@ export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'danger';
 export type ButtonShape = 'circle' | 'circle-outline';
 export type ButtonSize = 'small' | 'large';
 
-@Directive({
-  selector: 'button'
+@Component({
+  selector: 'button',
+  template: '<ng-content></ng-content>'
 })
-export class ButtonDirective implements OnInit, OnChanges {
+export class ButtonComponent implements OnInit, OnChanges {
 
   static defaultProps = {
     prefixCls: 'ant-btn',
@@ -25,7 +26,7 @@ export class ButtonDirective implements OnInit, OnChanges {
   // @Input() htmlType?: string;
   @Input() icon?: string;
   // @Input() shape?: ButtonShape;
-  @Input() size?: ButtonSize = 'large';
+  @Input() size?: ButtonSize;
   @Input() loading?: boolean | { delay?: number };
   @Input() disabled?: boolean;
   // @Input() style?: string;
@@ -69,12 +70,22 @@ export class ButtonDirective implements OnInit, OnChanges {
   }
 
   resetClasses() {
+    let sizeCls = '';
+    switch (this.size) {
+      case 'large':
+        sizeCls = 'lg';
+        break;
+      case 'small':
+        sizeCls = 'sm';
+        break;
+      default:
+        break;
+    }
+
     let classes = classNames(this.prefixCls, {
-      [`${this.prefixCls}-loading`]: this.loading,
-      [`${this.prefixCls}-${this.size}`]: this.size,
       [`${this.prefixCls}-${this.type}`]: this.type,
       // [`${this.prefixCls}-${shape}`]: shape,
-      // [`${this.prefixCls}-${sizeCls}`]: sizeCls,
+      [`${this.prefixCls}-${sizeCls}`]: sizeCls,
       // [`${this.prefixCls}-icon-only`]: !children && icon,
       [`${this.prefixCls}-loading`]: this.loading,
       // [`${this.prefixCls}-clicked`]: clicked,

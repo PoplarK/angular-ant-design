@@ -27,7 +27,22 @@
 
   <section>
     <h2>button group</h2>
+    <h3>default</h3>
     <div button-group [className]="ant-btn-group">
+      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
+      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
+      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
+      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+    </div>
+    <h3>large</h3>
+    <div button-group [className]="ant-btn-group" [size]="'large'">
+      <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
+      <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
+      <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>
+      <button [className]="dangerBtnClassName" (onClick)="clickBtn($event)">danger</button>
+    </div>
+    <h3>small</h3>
+    <div button-group [className]="ant-btn-group" [size]="'small'">
       <button [className]="primaryBtnClassName" (onClick)="clickBtn($event)">primary</button>
       <button [className]="defaultBtnClassName" (onMouseDown)="clickBtn($event)">default</button>
       <button [className]="dashedBtnClassName" (onMouseUp)="clickBtn($event)">dashed</button>

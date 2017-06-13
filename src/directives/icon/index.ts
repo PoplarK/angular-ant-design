@@ -1,1 +1,0 @@
-export { IconDirective as Icon } from './icon';
