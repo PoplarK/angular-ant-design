@@ -5,7 +5,7 @@ export type ButtonSize = 'small' | 'large';
 
 @Component({
   selector: '[button-group]',
-  styles: ['.ant-btn-group > .ant-btn { margin-right: 0; }'],
+  styles: [':host.ant-btn-group /deep/ > .ant-btn { margin-right: 0; }'],
   template: `
     <ng-content></ng-content>
   `

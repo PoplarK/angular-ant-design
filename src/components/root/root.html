@@ -25,6 +25,7 @@
       <button [type]="'primary'" [disabled]="true" (onClick)="clickBtn($event)">Primary(disabled)</button>
       <button [disabled]="true" (onMouseDown)="clickBtn($event)">Default(disabled)</button>
       <button [type]="'dashed'" [disabled]="true" (onMouseUp)="clickBtn($event)">Dashed(disabled)</button>
+      <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [icon]="'search'"></button>
     </div>
   </section>
 
@@ -32,24 +33,24 @@
     <h2>button group</h2>
     <h3>default</h3>
     <div button-group>
-      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
-      <button (onMouseDown)="clickBtn($event)">Default</button>
-      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
-      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary
+      </button><button (onMouseDown)="clickBtn($event)">Default
+      </button><button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed
+      </button><button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>large</h3>
     <div button-group [size]="'large'">
-      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
-      <button (onMouseDown)="clickBtn($event)">Default</button>
-      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
-      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary
+      </button><button (onMouseDown)="clickBtn($event)">Default
+      </button><button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed
+      </button><button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>small</h3>
     <div button-group [size]="'small'">
-      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
-      <button (onMouseDown)="clickBtn($event)">Default</button>
-      <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
-      <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
+      <button [type]="'primary'" (onClick)="clickBtn($event)">Primary
+      </button><button (onMouseDown)="clickBtn($event)">Default
+      </button><button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed
+      </button><button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
   </section>
 </div>
