@@ -31,21 +31,21 @@
   <section>
     <h2>button group</h2>
     <h3>default</h3>
-    <div button-group [className]="ant-btn-group">
+    <div button-group>
       <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
       <button (onMouseDown)="clickBtn($event)">Default</button>
       <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
       <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>large</h3>
-    <div button-group [className]="ant-btn-group" [size]="'large'">
+    <div button-group [size]="'large'">
       <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
       <button (onMouseDown)="clickBtn($event)">Default</button>
       <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>
       <button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
     </div>
     <h3>small</h3>
-    <div button-group [className]="ant-btn-group" [size]="'small'">
+    <div button-group [size]="'small'">
       <button [type]="'primary'" (onClick)="clickBtn($event)">Primary</button>
       <button (onMouseDown)="clickBtn($event)">Default</button>
       <button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed</button>

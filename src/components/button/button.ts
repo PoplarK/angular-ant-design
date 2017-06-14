@@ -58,6 +58,8 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
   @Input() className?: string;
   @Input() ghost?: boolean;
 
+  @HostBinding('class') classes: string;
+
   @Output() onClick?: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onMouseDown?: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onMouseUp?: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -121,7 +123,7 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
         break;
     }
 
-    let classes = classNames(this.prefixCls, {
+    this.classes = classNames(this.prefixCls, {
       [`${this.prefixCls}-${this.type}`]: this.type,
       [`${this.prefixCls}-${this.shape}`]: this.shape,
       [`${this.prefixCls}-${sizeCls}`]: sizeCls,
@@ -130,15 +132,12 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
       // [`${this.prefixCls}-clicked`]: clicked,
       [`${this.prefixCls}-background-ghost`]: this.ghost,
     }, this.className);
-    this.classes = classes;
   }
 
   setIcon() {
     this.iconType = this.loading ? 'loading' : this.icon || '';
     this.hasIcon = '' !== this.iconType;
   }
-
-  @HostBinding('class') classes: string;
 
   @HostListener('click') handleClick = () => {
     if (this.onClick) {

@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, HostBinding, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import * as classNames from 'classnames';
 
 export type ButtonSize = 'small' | 'large';
@@ -10,37 +10,37 @@ export type ButtonSize = 'small' | 'large';
     <ng-content></ng-content>
   `
 })
-export class ButtonGroupComponent implements OnChanges {
+export class ButtonGroupComponent implements OnInit, OnChanges {
 
   @HostBinding('class') classes: string = '';
 
   @Input() size?: ButtonSize;  
   @Input() style?: string; // TODO - React.CSSProperties
   @Input() className?: string;
-  @Input() prefixCls?: string;
+  @Input() prefixCls?: string = 'ant-btn-group';
 
-  constructor() {
+  constructor() { }
 
+  ngOnInit() {
+    this.setClasses();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changedd", changes);
+    let changed = false;
+    for (let key in changes) {
+      let change = changes[key];
+      if (!change.isFirstChange()) {
+        changed = true;
+      }
+    }
+    if (changed) {
+      this.setClasses();
+    }
+  }
 
-    let prefixCls = 'ant-btn-group';
-    if (changes.prefixCls) {
-      prefixCls = changes.prefixCls.currentValue;
-    }
-    let size = '';
-    if (changes.size) {
-      size = changes.size.currentValue;
-    }
-    let className = '';
-    if (changes.className) {
-      className = changes.className.currentValue;
-    }
-
+  setClasses() {
     let sizeCls = '';
-    switch (size) {
+    switch (this.size) {
       case 'large':
         sizeCls = 'lg';
         break;
@@ -51,8 +51,8 @@ export class ButtonGroupComponent implements OnChanges {
         break;
     }
 
-    this.classes = classNames(prefixCls, {
-      [`${prefixCls}-${sizeCls}`]: sizeCls,
-    }, className);
+    this.classes = classNames(this.prefixCls, {
+      [`${this.prefixCls}-${sizeCls}`]: sizeCls,
+    }, this.className);
   }
 }
