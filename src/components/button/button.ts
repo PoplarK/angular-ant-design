@@ -38,8 +38,10 @@ export type ButtonSize = 'small' | 'large';
 })
 export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
 
-  // timeout: number;
-  // delayTimeout: number;
+  private _loading: boolean = false;
+  private timeout: number;
+  private delayTimeout: number;
+  private clicked: boolean;
   private iconType: string;
   private hasIcon: boolean;
   @ViewChild('contentWrapper') contentRef: ElementRef;
@@ -72,8 +74,6 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
     console.log('on init: ', this.el.nativeElement);
 
     this.el.nativeElement.type = this.htmlType || 'button';
-    this.setClasses();
-    this.setIcon();
   }
 
   /*
@@ -88,6 +88,9 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
     this.contentText = insertSpace(text, needInserted) || '';
     this.hasContent = '' !== this.contentText;
     contentElement.remove();
+
+    this.setIcon();
+    this.setClasses();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -97,8 +100,24 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
       let change = changes[key];
       if (!change.isFirstChange()) {
         changed = true;
-        if('icon' === key || 'loading' === key) {
+        if ('icon' === key || 'loading' === key) {
           iconChanged = true;
+        }
+      }
+      if ('loading' === key) {
+        let currentLoading = changes[key].previousValue;
+        let loading = changes[key].currentValue;
+        if (currentLoading) {
+          clearTimeout(this.delayTimeout);
+        }
+        if (typeof loading !== 'boolean' && loading && loading.delay) {
+          this.delayTimeout = setTimeout(() => {
+            this._loading = true;
+            this.setIcon();
+            this.setClasses();
+          }, loading.delay)
+        } else {
+          this._loading = true;
         }
       }
     }
@@ -127,19 +146,26 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
       [`${this.prefixCls}-${this.type}`]: this.type,
       [`${this.prefixCls}-${this.shape}`]: this.shape,
       [`${this.prefixCls}-${sizeCls}`]: sizeCls,
-      // [`${this.prefixCls}-icon-only`]: !children && icon,
-      [`${this.prefixCls}-loading`]: this.loading,
-      // [`${this.prefixCls}-clicked`]: clicked,
+      [`${this.prefixCls}-icon-only`]: !this.hasContent && this.hasIcon,
+      [`${this.prefixCls}-loading`]: this._loading,
+      [`${this.prefixCls}-clicked`]: this.clicked,
       [`${this.prefixCls}-background-ghost`]: this.ghost,
     }, this.className);
   }
 
   setIcon() {
-    this.iconType = this.loading ? 'loading' : this.icon || '';
+    this.iconType = this._loading ? 'loading' : this.icon || '';
     this.hasIcon = '' !== this.iconType;
   }
 
   @HostListener('click') handleClick = () => {
+    this.clicked = true;
+    this.setClasses();
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(()=> {
+      this.clicked = false;
+      this.setClasses();
+    }, 500);
     if (this.onClick) {
       this.onClick.emit(true);
     }

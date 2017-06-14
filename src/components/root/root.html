@@ -26,6 +26,7 @@
       <button [disabled]="true" (onMouseDown)="clickBtn($event)">Default(disabled)</button>
       <button [type]="'dashed'" [disabled]="true" (onMouseUp)="clickBtn($event)">Dashed(disabled)</button>
       <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [icon]="'search'"></button>
+      <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [icon]="'reload'" [loading]="{delay: 2000}">Delay loading</button>
     </div>
   </section>
 
