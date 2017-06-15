@@ -26,6 +26,8 @@
       <button [disabled]="true" (onMouseDown)="clickBtn($event)">Default(disabled)</button>
       <button [type]="'dashed'" [disabled]="true" (onMouseUp)="clickBtn($event)">Dashed(disabled)</button>
       <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [icon]="'search'"></button>
+      <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [shape]="'circle'" [icon]="'loading'"></button>
+      <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [shape]="'circle'" [loading]="true"></button>
       <button [type]="'primary'" (onMouseUp)="clickBtn($event)" [icon]="'reload'" [loading]="{delay: 2000}">Delay loading</button>
     </div>
   </section>
@@ -52,6 +54,13 @@
       </button><button (onMouseDown)="clickBtn($event)">Default
       </button><button [type]="'dashed'" (onMouseUp)="clickBtn($event)">Dashed
       </button><button [type]="'danger'" (onClick)="clickBtn($event)">Danger</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>alert</h2>
+    <div>
+      <div ant-alert [message]="'Info Text'" [type]="'info'" [closeText]="'Close Now'"></div>
     </div>
   </section>
 </div>

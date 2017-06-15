@@ -1,0 +1,8 @@
+<div [class]="classes" *ngIf="!closed" (@shrinkOut.start)="animationStart($event)" (@shrinkOut.done)="animationEnd($event)">
+  <i anticon *ngIf="banner && showIcon === undefined ? true: showIcon" [className]="'ant-alert-icon'" [type]="iconType"></i>
+  <span class="{{prefixCls}}-message">{{message}}</span>
+  <span class="{{prefixCls}}-description">{{description}}</span>
+  <a *ngIf="_closable" (click)="handleClose($event)" class="{{prefixCls}}-close-icon">
+    {{closeText}}<i anticon [type]="'cross'" [hidden]="closeText"></i>
+  </a>
+</div>
