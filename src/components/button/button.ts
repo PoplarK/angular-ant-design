@@ -116,8 +116,10 @@ export class ButtonComponent implements OnInit, OnChanges, AfterContentInit {
             this.setIcon();
             this.setClasses();
           }, loading.delay)
-        } else {
+        } else if (typeof loading === 'boolean' && loading) {
           this._loading = true;
+        } else {
+          this._loading = false;
         }
       }
     }
