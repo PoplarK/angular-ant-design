@@ -3,9 +3,10 @@
 Anyone submit the PR is very helpful, thanks.
 
 Done:
+
 1. Icon
-2. Button
-3. Button Group
+1. Button
+1. Button Group
+1. Alert
 
 Doing:
-1. Alert

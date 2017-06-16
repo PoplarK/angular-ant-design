@@ -9,15 +9,15 @@ type AlertType = 'success' | 'info' | 'warning' | 'error';
   templateUrl: './index.html',
   encapsulation: ViewEncapsulation.None,
   animations: [
-    trigger('shrinkOut', [
-      state('in', style({height: '*'})),
-      transition('void => *', [
-        style({height: 0}),
-        animate(200, style({height: '*'}))
+    trigger('alertState', [
+      state('init', style({opacity: 0, transform: 'scaleY(0)', height: 0, 'padding-top': 0, 'padding-bottom': 0, border: 0})),
+      state('created', style({opacity: 1, transform: 'scaleY(1)', height: '*', 'padding-top': '*', 'padding-bottom': '*', border: '*'})),
+      state('destroy', style({opacity: 0, transform: 'scaleY(0)', height: 0, 'padding-top': 0, 'padding-bottom': 0, border: 0})),
+      transition('init => created', [
+        animate(300)
       ]),
-      transition('* => void', [
-        style({height: '*'}),
-        animate(2000, style({height: 0}))
+      transition('created => destroy', [
+        animate(300)
       ])
     ])
   ]
@@ -28,6 +28,7 @@ export class AlertComponent implements OnInit, OnChanges {
   private iconType: string = 'default';
   private classes: string = '';
   private _closable: boolean;
+  private state: string;
 
   @Input() type?: AlertType;
   @Input() closable?: boolean;
@@ -41,10 +42,13 @@ export class AlertComponent implements OnInit, OnChanges {
 
   @Output() onClose?: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+    this.state = 'init';
+  }
 
   ngOnInit() {
     this.render();
+    setTimeout(() => { this.state = 'created' }, 200);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -60,14 +64,16 @@ export class AlertComponent implements OnInit, OnChanges {
     }
   }
 
-  animationStart = (e: any) => {
-    console.log("animation start: ", e, ' type: ', typeof e);
-  }
+  // animationStart = (e: any) => {
+  //   console.log("animation start: ", e, ' type: ', typeof e);
+  // }
 
   animationEnd = (e: any) => {
     console.log("animation end: ", e);
-    this.closed = true;
-    this.closing = true;
+    if ('destroy' === e.toState) {
+      this.closed = true;
+      this.closing = true;
+    }
   }
 
   render() {
@@ -90,6 +96,10 @@ export class AlertComponent implements OnInit, OnChanges {
         this.iconType = 'default';
     }
 
+    if (!!this.description) {
+      this.iconType += '-o';
+    }
+
     if (this.closeText) {
       this._closable = true;
     } else {
@@ -106,8 +116,10 @@ export class AlertComponent implements OnInit, OnChanges {
   }
 
   handleClose = (e: any) => {
+    e.preventDefault();
     console.log('alert close event: ', e);
 
+    this.state = 'destroy';
     if (this.onClose) {
       this.onClose.emit();
     }
