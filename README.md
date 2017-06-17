@@ -10,3 +10,7 @@ Done:
 1. Alert
 
 Doing:
+
+Blocking:
+
+1. reading code of rc-upload and rc-calendar, will create these two repositories for angular.
